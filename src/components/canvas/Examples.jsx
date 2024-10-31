@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useMemo, useRef, useState } from 'react'
-import { Line, useCursor, MeshDistortMaterial } from '@react-three/drei'
+import { Line, useCursor, MeshDistortMaterial, Environment, Float } from '@react-three/drei'
 import { useRouter } from 'next/navigation'
 
 export const Blob = ({ route = '/', ...props }) => {
@@ -16,9 +16,10 @@ export const Blob = ({ route = '/', ...props }) => {
       onClick={() => router.push(route)}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
-      {...props}>
+      {...props}
+    >
       <sphereGeometry args={[1, 64, 64]} />
-      <MeshDistortMaterial roughness={0.5} color={hovered ? 'hotpink' : '#1fb2f5'} />
+      <MeshDistortMaterial roughness={0.5} metalness={1.0} color={hovered ? '#595959' : '#1fb2f5'} />
     </mesh>
   )
 }
@@ -33,9 +34,9 @@ export const Logo = ({ route = '/blob', ...props }) => {
   useCursor(hovered)
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime()
-    mesh.current.rotation.y = Math.sin(t) * (Math.PI / 8)
-    mesh.current.rotation.x = Math.cos(t) * (Math.PI / 8)
-    mesh.current.rotation.z -= delta / 4
+    mesh.current.rotation.y = Math.sin(t) * (Math.PI / 9)
+    mesh.current.rotation.x = Math.cos(t) * (Math.PI / 12)
+    mesh.current.rotation.z -= delta / 2
   })
 
   return (
@@ -43,12 +44,16 @@ export const Logo = ({ route = '/blob', ...props }) => {
       {/* @ts-ignore */}
       <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} />
       {/* @ts-ignore */}
-      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} rotation={[0, 0, 1]} />
+      <Line worldUnits points={points} color='#59C4DC' lineWidth={0.15} rotation={[0, 0, 1]} />
       {/* @ts-ignore */}
       <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} rotation={[0, 0, -1]} />
       <mesh onClick={() => router.push(route)} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}>
         <sphereGeometry args={[0.55, 64, 64]} />
-        <meshPhysicalMaterial roughness={0.5} color={hovered ? 'hotpink' : '#1fb2f5'} />
+        <meshPhysicalMaterial
+          roughness={hovered ? 0.0 : 0.2}
+          metalness={hovered ? 1.0 : 0.2}
+          color={hovered ? 'black' : '#59C4DC'}
+        />
       </mesh>
     </group>
   )
@@ -59,10 +64,22 @@ export function Duck(props) {
 
   useFrame((state, delta) => (scene.rotation.y += delta))
 
-  return <primitive object={scene} {...props} />
+  return (
+    <group>
+      <Float speed={1}>
+        <primitive object={scene} {...props} />
+      </Float>
+    </group>
+  )
 }
 export function Dog(props) {
   const { scene } = useGLTF('/dog.glb')
 
-  return <primitive object={scene} {...props} />
+  return (
+    <group>
+      <Float speed={5}>
+        <primitive object={scene} {...props} />
+      </Float>
+    </group>
+  )
 }
