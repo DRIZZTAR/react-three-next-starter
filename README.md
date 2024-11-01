@@ -85,3 +85,11 @@ git clone https://github.com/pmndrs/react-three-next
 ### Maintainer:
 
 - [`x 🦊 @tysonjeremy`](https://twitter.com/tysonjeremy)
+
+Repo began from:
+
+- [react-three-next starter](https://github.com/pmndrs/react-three-next)
+
+Currently maintained by:
+
+- [`twitter 🐈‍⬛ @onirenaud`](https://twitter.com/onirenaud)
