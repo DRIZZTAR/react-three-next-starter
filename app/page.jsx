@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { Environment, Stars } from '@react-three/drei'
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
@@ -31,8 +31,7 @@ export default function Page() {
       <div className='fixed inset-0'>
         <View className='size-full'>
           <Suspense fallback={null}>
-            {/*put scene of random sloawlyt floatin geometries colorful here*/}
-            <Stars radius={200}/>
+            <Stars radius={200} />
             <CommonCanvas />
           </Suspense>
         </View>
@@ -54,7 +53,7 @@ export default function Page() {
             <View className='flex h-96 w-full flex-col items-center justify-center'>
               <Suspense fallback={null}>
                 <Logo route='/blob' scale={1} position={[0, 0, 0]} />
-                <Environment  preset='city' backgroundBlurriness={0.18} />
+                <Environment preset='city' backgroundBlurriness={0.18} />
                 <CommonCanvas />
               </Suspense>
             </View>
@@ -63,15 +62,13 @@ export default function Page() {
 
         <div className='mx-auto flex w-full flex-col flex-wrap items-center p-4 md:flex-row lg:w-4/5'>
           {/* first row */}
-          <div className='flex w-full flex-col items-start justify-center pt-6 text-center sm:pb-12 sm:pt-0 md:w-1/2 md:pr-12 md:text-left'>
+          <div className=' flex w-full flex-col items-start justify-center pt-6 text-center sm:pb-12 sm:pt-0 md:w-1/2 md:pr-12 md:text-left'>
             <h2 className='mb-3 w-full text-3xl font-bold leading-none tracking-tight text-white'>
               Events are propagated
             </h2>
-            <p className='mb-8 w-full text-gray-400'>
-              Drag, scroll, pinch, and rotate the canvas to explore the 3D scene.
-            </p>
+            <p className='w-full text-gray-400'>Drag, scroll, pinch, and rotate the canvas to explore the 3D scene.</p>
           </div>
-          <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
+          <div className=' my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
             <View orbit className='relative h-full sm:h-48 sm:w-full'>
               <Suspense fallback={null}>
                 <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} />
