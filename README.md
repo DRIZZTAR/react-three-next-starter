@@ -14,7 +14,7 @@ This starter allows you to navigate seamlessly between pages with dynamic dom an
 
 ### ⚫ Demo :
 
-[![image](public/img/homePageDemo.jpg)](https://react-three-next.vercel.app/)
+[![image](public/img/homePageDemo.jpg)](https://react-three-next-starter-psi.vercel.app/)
 
 ### How to use
 
