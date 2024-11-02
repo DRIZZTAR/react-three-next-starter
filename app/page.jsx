@@ -26,7 +26,7 @@ const CommonCanvas = dynamic(() => import('@/components/canvas/View').then((mod)
 
 export default function Page() {
   return (
-    <div className='relative min-h-screen bg-black bg-gradient-to-b from-black via-gray-900 to-black'>
+    <div className='relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-black'>
       {/* Full background 3D view */}
       <div className='fixed inset-0'>
         <View className='size-full'>
