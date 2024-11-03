@@ -18,24 +18,15 @@ This starter allows you to navigate seamlessly between pages with dynamic dom an
 
 ### How to use
 
-#### Installation
+#### :passport_control: Installation
 
-_Tailwind is the default style. styled-components (styled) are also available._
+_Tailwind is the default style._
 
-```sh
-yarn create r3f-app next my-app
-# yarn create r3f-app <next> my-app <tailwind|styled>? -ts?
-# npx create-r3f-app next my-app
-```
-
-### :passport_control: Typescript
-
-For typescript add the parameter `-ts` or `--typescript`:
-
-```sh
-yarn create r3f-app next my-app -ts
-# npx create-r3f-app next my-app -ts
-```
+## Installation
+1. Click "Use this template" button above
+2. Clone your new repository
+3. Run `yarn install` or `npm install`
+4. Run `yarn dev` or `npm run dev`
 
 ### :mount_fuji: Features
 
